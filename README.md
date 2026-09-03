@@ -186,7 +186,7 @@ Hành trình 27 ngày được cấu trúc thành 2 giai đoạn chiến lược
   * Tại sao ưu tiên Cosine Similarity hơn Euclidean Distance? Vì độ dài vector biểu diễn văn bản phụ thuộc vào tần số từ và độ dài đoạn trích; hai văn bản cùng chủ đề nhưng dài ngắn khác nhau vẫn có góc hướng tương tự nhau.
 * **Kỹ thuật Chunking & Toán học Overlap:**
   * Công thức tính số lượng chunk khi cắt trượt:
-    $$N_{\text{chunks}} = \left\lceil \frac{L_{\text{doc}} - \text{Overlap}}{\text{Chunk\_Size} - \text{Overlap}} \right\rceil$$
+    $$N_{\text{chunks}} = \left\lceil \frac{L_{\text{doc}} - \text{Overlap}}{\text{Chunk Size} - \text{Overlap}} \right\rceil$$
   * Ý nghĩa của Overlap: Bảo toàn ngữ cảnh ngữ nghĩa tại các ranh giới cắt, ngăn chặn tình trạng một câu hoặc ý niệm quan trọng bị xẻ đôi sang hai chunk khác nhau.
   * 3 chiến lược: Fixed-size chunking (theo ký tự/token), Paragraph/Markdown chunking (theo ranh giới tự nhiên), Semantic chunking (dựa vào biến thiên cosine giữa các câu liền kề).
 * **Kiến trúc Vector Store In-Memory:**
@@ -213,7 +213,7 @@ Hành trình 27 ngày được cấu trúc thành 2 giai đoạn chiến lược
 * **Hybrid Retrieval & RRF (Reciprocal Rank Fusion):**
   * Kết hợp **Sparse Search (BM25)** (bắt chính xác từ khóa) và **Dense Search (Embedding Cosine)** (hiểu nghĩa trừu tượng).
   * Công thức gộp thứ hạng RRF:
-    $$\text{RRF\_Score}(d) = \sum_{m \in M} \frac{1}{k + r_m(d)}$$
+    $$\text{RRF Score}(d) = \sum_{m \in M} \frac{1}{k + r_m(d)}$$
     *(với $r_m(d)$ là thứ hạng của tài liệu $d$ trong hệ thống truy xuất $m$, $k$ là hằng số làm mịn, thường chọn $k = 60$)*.
 * **Nâng cao chất lượng Query:**
   * **HyDE (Hypothetical Document Embeddings):** Cho LLM sinh một đoạn trả lời giả định trước, sau đó nhúng đoạn văn giả định đó thành vector để đi tìm tài liệu thật (giúp chuyển câu hỏi ngắn thành đoạn văn dài đồng dạng không gian embedding).
